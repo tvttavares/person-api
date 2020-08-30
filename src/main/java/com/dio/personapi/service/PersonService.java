@@ -23,7 +23,7 @@ public class PersonService {
 	@PostMapping
 	public MessageResponse createPerson(Person personToSave) {
 		Person savedPerson = personRepository.save(personToSave);
-		return createMessageResponse(savedPerson.getId(), "Created person with ID: ");
+		return createMessageResponse(savedPerson.getId(), "Person successfully created with ID: ");
 	}
 
 	public List<Person> listAll() {
@@ -44,7 +44,7 @@ public class PersonService {
 	public MessageResponse updatePerson(Long id, Person person) throws PersonNotFoundException {
 		verifyIfExists(id);
 		Person updatedPerson = personRepository.save(person);
-		return createMessageResponse(updatedPerson.getId(), "Updated person with ID: ");
+		return createMessageResponse(updatedPerson.getId(), "Person successfully updated with ID: ");
 	}
 
 	private Person verifyIfExists(Long id) throws PersonNotFoundException {
