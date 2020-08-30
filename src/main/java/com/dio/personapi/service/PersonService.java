@@ -12,11 +12,13 @@ import com.dio.personapi.model.Person;
 import com.dio.personapi.repository.PersonRepository;
 import com.dio.personapi.response.MessageResponse;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PersonService {
 
-	@Autowired
-	private PersonRepository personRepository;
+ 	private PersonRepository personRepository;
 
 	@PostMapping
 	public MessageResponse createPerson(Person personToSave) {

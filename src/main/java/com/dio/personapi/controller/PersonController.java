@@ -21,11 +21,13 @@ import com.dio.personapi.model.Person;
 import com.dio.personapi.response.MessageResponse;
 import com.dio.personapi.service.PersonService;
 
+import lombok.AllArgsConstructor;
+
 @RestController
 @RequestMapping("/api/people")
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PersonController {
 
-	@Autowired
 	private PersonService personService;
 
 	@GetMapping
@@ -48,7 +50,8 @@ public class PersonController {
 
 	@PutMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public MessageResponse updatePerson(@PathVariable Long id, @Valid @RequestBody Person person) throws PersonNotFoundException {
+	public MessageResponse updatePerson(@PathVariable Long id, @Valid @RequestBody Person person)
+			throws PersonNotFoundException {
 		return personService.updatePerson(id, person);
 	}
 
