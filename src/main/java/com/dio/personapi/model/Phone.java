@@ -7,6 +7,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,5 +31,7 @@ public class Phone {
 	private PhoneTypeEnum type;
 
 	@Column(nullable = false)
+	@NotEmpty
+	@Size(min = 13, max = 14)
 	private String number;
 }
