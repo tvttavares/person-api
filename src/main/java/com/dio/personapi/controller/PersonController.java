@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -43,6 +44,12 @@ public class PersonController {
 	@ResponseStatus(HttpStatus.OK)
 	public Person listAll(@PathVariable Long id) throws PersonNotFoundException {
 		return personService.findById(id);
+	}
+
+	@PutMapping("/{id}")
+	@ResponseStatus(HttpStatus.OK)
+	public MessageResponse updatePerson(@PathVariable Long id, @Valid @RequestBody Person person) throws PersonNotFoundException {
+		return personService.updatePerson(id, person);
 	}
 
 	@DeleteMapping("/{id}")
